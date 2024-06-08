@@ -36,3 +36,43 @@ JOIN ingridients ON ingridients.mix_id=mixes.id
 JOIN tabaco ON ingridients.tabaco_id=tabaco.id
 JOIN brends ON tabaco.brend_id=brends.id
 WHERE brends.name='Spectrum';
+
+SELECT * FROM autors
+JOIN brends ON true;
+
+SELECT * FROM brends
+LEFT JOIN goos ON goos.brend_id=brends.id;
+
+SELECT * FROM brends
+LEFT JOIN tabaco ON tabaco.brend_id=brends.id;
+
+SELECT * FROM autors
+LEFT JOIN mixes ON mixes.autor_id=autors.id
+WHERE mixes.id IS NOT NULL;
+
+SELECT * FROM autors
+LEFT JOIN mixes ON mixes.autor_id=autors.id
+WHERE mixes.id IS NULL;
+
+SELECT * FROM autors
+RIGHT JOIN brends ON autors.id=brends.id;
+
+SELECT brends.name FROM brends
+JOIN tabaco ON tabaco.brend_id=brends.id
+GROUP BY brends.name;
+
+SELECT 
+    brends.name,
+    COUNT(*) 
+FROM brends
+JOIN tabaco ON tabaco.brend_id=brends.id
+GROUP BY brends.name;
+
+SELECT 
+    autors.name,
+    COUNT(*)  
+FROM autors
+JOIN mixes ON mixes.autor_id=autors.id
+GROUP BY autors.name;
+
+
